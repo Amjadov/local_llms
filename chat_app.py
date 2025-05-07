@@ -5,7 +5,7 @@ import os
 
 # --- Configuration ---
 # !!! IMPORTANT: Update this directory to your actual model file location !!!
-MODEL_DIRECTORY = "c:/deepseek_coder" # Directory containing your .gguf files
+MODEL_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 # --- LLM Parameters (kept consistent, but could also be made configurable) ---
 N_CTX = 4096
