@@ -1,17 +1,20 @@
 from llama_cpp import Llama
 import sys  # Needed for sys.stdout.flush
+import os
 
 # --- Configuration ---
 # Make sure this path is correct for your system!
-model_path = "c:/deepseek_coder/deepseek-coder-6.7b-instruct.Q4_K_M.gguf"
-
+model_name = "deepseek-coder-6.7b-instruct.Q4_K_M.gguf"
+#model_path = "c:/deepseek_coder/deepseek-coder-6.7b-instruct.Q4_K_M.gguf"
+MODEL_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+selected_model_path = os.path.join(MODEL_DIRECTORY, model_name)
 # Context window size. 4096 is a common default for Mistral/DeepSeek based models.
 # You might increase this if you have very long conversations or provide large code snippets.
 n_ctx = 8192 
 
 # Max tokens for the model to generate IN A SINGLE RESPONSE.
 # Adjust based on how long you expect code blocks or explanations to be.
-max_tokens_per_response = 1024
+max_tokens_per_response = 8192
 
 # Temperature controls randomness.
 # 0.0 is deterministic, higher values (like 0.7 or 0.8) are more creative/varied.
@@ -30,9 +33,9 @@ n_threads = 0
 
 # --- Initialize the LLM ---
 try:
-    print(f"Loading model from {model_path}...")
+    print(f"Loading model from {selected_model_path}...")
     llm = Llama(
-        model_path=model_path,
+        model_path=selected_model_path,
         n_ctx=n_ctx,
         n_gpu_layers=0,  # Explicitly run on CPU
         n_threads=n_threads,

@@ -8,7 +8,7 @@ import os
 MODEL_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 # --- LLM Parameters (kept consistent, but could also be made configurable) ---
-N_CTX = 4096
+N_CTX = 4096 #16384
 MAX_TOKENS_PER_RESPONSE = 1024
 TEMPERATURE = 0.7
 STOP_SEQUENCES = ["\nUser:", "```"] # Add other potential stop sequences common in code generation if needed
