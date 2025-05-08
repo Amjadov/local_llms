@@ -10,17 +10,17 @@ MODEL_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 selected_model_path = os.path.join(MODEL_DIRECTORY, model_name)
 # Context window size. 4096 is a common default for Mistral/DeepSeek based models.
 # You might increase this if you have very long conversations or provide large code snippets.
-n_ctx = 8192 
+n_ctx = 16384 #8192 
 
 # Max tokens for the model to generate IN A SINGLE RESPONSE.
 # Adjust based on how long you expect code blocks or explanations to be.
-max_tokens_per_response = 8192
+max_tokens_per_response = 16384 #8192
 
 # Temperature controls randomness.
 # 0.0 is deterministic, higher values (like 0.7 or 0.8) are more creative/varied.
 # For coding, a slightly lower temperature might be preferred for accuracy,
 # but 0.7 is a good balance.
-temperature = 0.7
+temperature = 0.1 #0.7
 
 # Stop sequence(s). The model will stop generating when it produces one of these strings.
 # For an instruct model following a "User: ... Assistant: ..." format,
@@ -33,7 +33,7 @@ n_threads = 0
 
 # --- Initialize the LLM ---
 try:
-    print(f"Loading model from {selected_model_path}...")
+    #print(f"Loading model from {selected_model_path}...")
     llm = Llama(
         model_path=selected_model_path,
         n_ctx=n_ctx,
